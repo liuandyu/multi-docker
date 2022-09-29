@@ -14,4 +14,11 @@ after_success:
   - docker build -t jeff/multi-nginx ./nginx
   - docker build -t jeff/multi-server ./server
   - docker build -t jeff/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push jeff/multi-client
+  - docker push jeff/multi-nginx
+  - docker push jeff/multi-server
+  - docker push jeff/multi-worker
+#Log in to the docker CLI
+
 
