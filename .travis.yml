@@ -10,15 +10,15 @@ script:
   - docker run  -e CI=true jeff/react-test npm test 
 
 after_success:
-  - docker build -t jeff/multi-client ./client
-  - docker build -t jeff/multi-nginx ./nginx
-  - docker build -t jeff/multi-server ./server
-  - docker build -t jeff/multi-worker ./worker
+  - docker build -t techjeffyu/multi-client:latest ./client
+  - docker build -t techjeffyu/multi-nginx:latest ./nginx
+  - docker build -t techjeffyu/multi-server:latest ./server
+  - docker build -t techjeffyu/multi-worker:latest ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push jeff/multi-client
-  - docker push jeff/multi-nginx
-  - docker push jeff/multi-server
-  - docker push jeff/multi-worker
+  - docker push techjeffyu/multi-client:latest
+  - docker push techjeffyu/multi-nginx:latest
+  - docker push techjeffyu/multi-server:latest
+  - docker push techjeffyu/multi-worker:latest
 #Log in to the docker CLI
 
 
